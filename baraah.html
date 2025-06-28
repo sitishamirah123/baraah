@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Amazing Friend Baraah</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        
+        :root {
+            --purple-dark: #4b0082;
+            --purple-medium: #8a2be2;
+            --purple-light: #e6e6fa;
+            --pink: #ff69b4;
+            --star-yellow: #fffacd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0524;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: var(--star-yellow);
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Welcome Page */
+        .welcome-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #2e1065 0%, #6b21a8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-page h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--pink);
+            z-index: 2;
+        }
+        
+        .welcome-page p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            z-index: 2;
+            max-width: 80%;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 20px;
+            z-index: 2;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-yes {
+            background-color: var(--pink);
+            color: white;
+            box-shadow: 0 0 15px var(--pink);
+        }
+        
+        .btn-no {
+            background-color: white;
+            color: var(--purple-dark);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-no:hover::after {
+            content: "You can't say no!";
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--pink);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .astronaut {
+            position: absolute;
+            width: 150px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Main Content Page */
+        .main-content {
+            display: none;
+            padding: 50px 0;
+            background: linear-gradient(135deg, #1e0750 0%, #4c1d95 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: var(--pink);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--pink);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .memory-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .memory-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .memory-card h2 {
+            color: var(--pink);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .memory-card p {
+            line-height: 1.6;
+        }
+        
+        .memory-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+        }
+        
+        .quote-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border-left: 5px solid var(--pink);
+        }
+        
+        .quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--star-yellow);
+            margin-bottom: 20px;
+        }
+        
+        .author {
+            font-style: italic;
+            color: var(--pink);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .birthday-section {
+            text-align: center;
+            margin: 80px 0;
+            position: relative;
+        }
+        
+        .birthday-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .birthday-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pink), var(--purple-medium), var(--pink));
+        }
+        
+        .birthday-card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--pink);
+            margin-bottom: 20px;
+        }
+        
+        .birthday-card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .cake {
+            font-size: 3rem;
+            animation: bounce 1s infinite alternate;
+            display: inline-block;
+        }
+        
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer p {
+            font-size: 1.1rem;
+        }
+        
+        .magic-button {
+            background: linear-gradient(45deg, var(--purple-medium), var(--pink));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .magic-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.7);
+        }
+        
+        .magic-button::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+        }
+        
+        .magic-button:hover::after {
+            left: 100%;
+        }
+        
+        .hearts {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--pink);
+            animation: float 3s ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .welcome-page h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .memory-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote {
+                font-size: 1.5rem;
+            }
+            
+            .birthday-card h2 {
+                font-size: 2rem;
+            }
+        }
+       /* Enhanced Sparkle Effects */
+.sparkle {
+    position: fixed; /* Changed from absolute to fixed */
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999; /* Extremely high z-index */
+    animation: sparkle-fly 1.5s ease-out forwards;
+    box-shadow: 0 0 20px 5px #fff,
+                0 0 30px 10px var(--pink),
+                0 0 40px 15px var(--purple-medium);
+    opacity: 0.9;
+    transform: translate(-50%, -50%); /* Center the sparkle */
+}
+
+.big-sparkle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.9),
+                0 0 0 0 rgba(255, 105, 180, 0.9),
+                0 0 0 0 rgba(138, 43, 226, 0.9);
+    animation: big-sparkle 1.5s ease-out forwards;
+    z-index: 10000; /* Even higher than sparkles */
+}
+
+/* Make sure these animations are defined */
+@keyframes sparkle-fly {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(
+            calc(-50% + var(--tx)), 
+            calc(-50% + var(--ty))) scale(1.5);
+        opacity: 100;
+    }
+}
+
+@keyframes big-sparkle {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.9),
+                    0 0 0 0 rgba(255, 105, 180, 0.9),
+                    0 0 0 0 rgba(138, 43, 226, 0.9);
+        width: 10px;
+        height: 10px;
+    }
+    50% {
+        opacity: 100;
+    }
+    100% {
+        box-shadow: 0 0 0 300px rgba(255, 255, 255, 0),
+                    0 0 0 600px rgba(255, 105, 180, 0),
+                    0 0 0 900px rgba(138, 43, 226, 0);
+        width: 20px;
+        height: 20px;
+        opacity: 100;
+    }
+}
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--pink);
+            animation: confetti-fall 3s linear forwards;
+            z-index: 999;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Welcome Page -->
+    <div class="welcome-page" id="welcomePage">
+        <h1>For My Dearest Baraah</h1>
+        <p>A magical journey of our beautiful friendship</p>
+        
+        <div class="button-container">
+            <button class="btn btn-yes" id="btnYes">Open to View</button>
+            <button class="btn btn-no" id="btnNo">I Dare You to Say No!</button>
+        </div>
+        
+        <!-- Astronaut and Planets -->
+        <img src="https://cdn-icons-png.flaticon.com/512/4972/4972938.png" class="astronaut" style="top: 20%; left: 10%; width: 120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3299/3299956.png" class="astronaut" style="top: 70%; right: 10%; width: 100px; transform: scaleX(-1);">
+        
+        <div class="planet" style="width: 80px; height: 80px; background: linear-gradient(45deg, #ff69b4, #8a2be2); bottom: 10%; left: 15%;"></div>
+        <div class="planet" style="width: 120px; height: 120px; background: linear-gradient(45deg, #9370db, #4b0082); top: 15%; right: 20%;"></div>
+        <div class="planet" style="width: 60px; height: 60px; background: linear-gradient(45deg, #ba55d3, #da70d6); top: 60%; left: 25%;"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <div class="header">
+                <h1>To Baraah Ali Omar Balagem</h1>
+                <p>The most amazing, kind-hearted, genius, and beautiful friend I've ever had</p>
+            </div>
+            
+            <div class="memory-section">
+                <div class="memory-card">
+                    <h2>Your Kindness</h2>
+                    <p>Even when you have other things to do, if I ask for your help you come right away. That's how amazing you are. Your selflessness is something I admire so much about you.</p>
+                </div>
+                
+                <div class="memory-card">
+                    <h2>Late Night Adventures</h2>
+                    <p>Who walks around Unimap late at night? Who goes for roti canai at 5am? You do! And you invited me along, creating some of my favorite memories under the shining stars.</p>
+                </div>
+                
+                <div class="memory-card">
+                    <h2>Raya Together</h2>
+                    <p>I'm so happy you came to celebrate Raya with my family. They love you because they can see your pure heart. You brought so much joy to our celebration!</p>
+                </div>
+                
+                <div class="memory-card">
+                    <h2>Our Crazy Times</h2>
+                    <p>You always claim to be a "reasonable paggel" (crazy in Hindi), and you're absolutely right! But it's your wonderful craziness that makes every moment with you so special.</p>
+                </div>
+                
+                <div class="memory-card">
+                    <h2>Hiking & Water Fun</h2>
+                    <p>I treasure all our outdoor adventures - hiking together, playing in the river, just enjoying nature's beauty side by side. Your energy makes everything more fun!</p>
+                </div>
+                
+                <div class="memory-card">
+                    <h2>My Trust in You</h2>
+                    <p>You have no idea that you're the only person I truly open up to. I trust you more than anyone else, and that's because you've shown me time and again how worthy you are of that trust.</p>
+                </div>
+            </div>
+            
+            <div class="quote-section">
+                <p class="quote">"A true friend is someone who thinks that you are a good egg even though he knows that you are slightly cracked."</p>
+                <p class="author">- Bernard Meltzer (but it reminds me of you, my reasonable paggel!)</p>
+            </div>
+            
+            
+            <!-- Gallery Placeholder - You can add real images later 
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/600x600/?night,stars" alt="Our night adventures">
+                    <div class="gallery-caption">Our star-gazing nights</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/600x600/?hiking" alt="Our hiking trips">
+                    <div class="gallery-caption">Hiking adventures</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/600x600/?river,water" alt="Playing in water">
+                    <div class="gallery-caption">Water fun memories</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/600x600/?friends,laughing" alt="Laughing together">
+                    <div class="gallery-caption">Our endless laughter</div>
+                </div>
+                -->
+                <div class="gallery">
+                <div class="gallery-item">
+        <img src="4.jpeg" alt="Our Laughter">
+        <div class="gallery-caption">Special Moment</div>
+    </div>
+    <div class="gallery-item">
+        <img src="adventure.jpeg" alt="Our adventure">
+        <div class="gallery-caption">Adventure Time</div>
+    </div>
+    <div class="gallery-item">
+        <img src="hiking.jpeg" alt="Our Hiking">
+        <div class="gallery-caption">Hiking Buddies</div>
+    </div>
+    <div class="gallery-item">
+        <img src="baraah_pf.jpeg" alt="Our Beatiful Baraah">
+        <div class="gallery-caption">Beautiful Baraah</div>
+    </div>
+    <div class="gallery-item">
+        <img src="mybd.jpeg" alt="Our Crazy Moment">
+        <div class="gallery-caption">Birthday Memories</div>
+    </div>
+    <div class="gallery-item">
+        <img src="raya.jpeg" alt="Our Raya celebration">
+        <div class="gallery-caption">Raya Together</div>
+    </div>
+            </div>
+            
+            <div class="birthday-section">
+                <div class="birthday-card">
+                    <h2>Happy Birthday Baraah!</h2>
+                    <p>Even though you'll be in Penang for your birthday this July, I want you to know I'll be thinking of you and celebrating you from afar. You're starting an exciting new journey, and I know you'll accomplish amazing things!</p>
+                    <p>May this year bring you as much happiness as you've brought into my life. You deserve all the wonderful things this world has to offer.</p>
+                    <div class="cake">🎂</div>
+                </div>
+            </div>
+            
+            <div class="quote-section">
+                <p class="quote">"No matter where life takes you, please always look up to me even when we're apart. Thank you for being my star, my adventure buddy, and most importantly, my best friend."</p>
+                <p class="author">- From someone who cherishes you more than words can say</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="magic-button" id="magicButton">Create Magic for Baraah!</button>
+            </div>
+            
+            <div class="footer">
+                <p>Created with love for the most wonderful Yemeni girl I've ever met</p>
+                <p>I truly cherish all our moments together, Miss Baraah Ali Omar Balagem!</p>
+            </div>
+        </div>
+    </div>
+    
+   <script>
+    // Create stars
+    function createStars() {
+        const welcomePage = document.getElementById('welcomePage');
+        const mainContent = document.getElementById('mainContent');
+        
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random size between 1px and 3px
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Random position
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            // Random animation duration
+            star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+            
+            // Add to both pages
+            welcomePage.appendChild(star.cloneNode(true));
+            mainContent.appendChild(star);
+        }
+    }
+    
+    // No button fun
+    document.getElementById('btnNo').addEventListener('mouseover', function() {
+        this.textContent = "Hahaha You Can't Say No!";
+        this.style.backgroundColor = "#ff69b4";
+        this.style.color = "white";
+        this.style.boxShadow = "0 0 15px #ff69b4";
+    });
+    
+    document.getElementById('btnNo').addEventListener('mouseout', function() {
+        this.textContent = "I Dare You to Say No!";
+        this.style.backgroundColor = "white";
+        this.style.color = "#4b0082";
+        this.style.boxShadow = "none";
+    });
+    
+    document.getElementById('btnNo').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert("Hahahaha! Nice try, but you can't say no! Only 'Yes' is allowed here, Miss Balagem!");
+    });
+    
+    // Yes button - show main content
+    document.getElementById('btnYes').addEventListener('click', function() {
+        document.getElementById('welcomePage').style.display = "none";
+        document.getElementById('mainContent').style.display = "block";
+        
+        // Add more stars to main content
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+            
+            document.getElementById('mainContent').appendChild(star);
+        }
+    });
+    
+// Combined Magic button with all effects
+document.getElementById('magicButton').addEventListener('click', function() {
+    // 1. Create big central sparkle explosion
+    const bigSparkle = document.createElement('div');
+    bigSparkle.classList.add('big-sparkle');
+    document.body.appendChild(bigSparkle);
+    
+    // 2. Create 100 sparkles radiating outward
+    for (let i = 0; i < 100; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        
+        // Random angle and distance
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 100 + Math.random() * 300;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        
+        sparkle.style.setProperty('--tx', `${tx}px`);
+        sparkle.style.setProperty('--ty', `${ty}px`);
+        
+        // Random color variation
+        const colors = ['#ff69b4', '#9370db', '#8a2be2', '#e6e6fa'];
+        sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Position around button
+        const buttonRect = this.getBoundingClientRect();
+        sparkle.style.left = `${buttonRect.left + buttonRect.width/2}px`;
+        sparkle.style.top = `${buttonRect.top + buttonRect.height/2}px`;
+        
+        document.body.appendChild(sparkle);
+        
+        // Remove after animation
+        setTimeout(() => sparkle.remove(), 1000);
+    }
+    
+    // 3. Create falling confetti
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        
+        // Random properties
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = `${Math.random() * 10 + 5}px`;
+        
+        // Random color
+        const colors = ['#ff69b4', '#8a2be2', '#9370db', '#e6e6fa', '#fff'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Random animation delay
+        confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+        
+        document.body.appendChild(confetti);
+        
+        // Remove after animation
+        setTimeout(() => confetti.remove(), 3000);
+    }
+    
+    // 4. Create floating hearts
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('hearts');
+        heart.innerHTML = "💜";
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.top = `${Math.random() * 100}%`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+        document.getElementById('mainContent').appendChild(heart);
+        
+        setTimeout(() => heart.style.opacity = "1", 100);
+        setTimeout(() => heart.remove(), 3000);
+    }
+    
+    // 5. Show message after effects are visible (increased delay to 1000ms)
+    setTimeout(() => {
+        alert("✨ Baraah, you're magical! ✨\nJust like these sparkles, you light up my life!\nThank you for being you! 💜\nYour lovely sham shammm 🦋");
+    }, 1000); // Changed from 500ms to 1000ms
+    
+    // Clean up big sparkle
+    setTimeout(() => bigSparkle.remove(), 1000);
+});
+    
+    // Initialize
+    window.onload = function() {
+        createStars();
+    };
+</script>
+</body>
+</html>
